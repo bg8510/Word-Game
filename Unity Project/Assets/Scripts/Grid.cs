@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System;
+using System.Linq;
+//using AssemblyCSharp;
 
 public class Grid : MonoBehaviour {
 
@@ -34,6 +38,23 @@ public class Grid : MonoBehaviour {
 
 	private GamePiece pressedPiece;		// This is the piece user clicked
 	private GamePiece enteredPiece;		// This is the piece where user unclicked
+
+	public List<string> Dictionary;
+
+	void Awake()
+	{
+		// Create the dictionary from a .txt file, as a List
+		var logFile = File.ReadAllLines(@"..\Unity Project\Assets\Scripts\dictionary.txt");
+		Dictionary = new List<string>(logFile);
+
+		print(Dictionary[199]);
+		print(Dictionary[200]);
+		print(Dictionary[201]);
+		print(Dictionary[202]);
+		print(Dictionary[203]);
+		print(Dictionary[204]);
+		print(Dictionary[205]);
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -500,7 +521,7 @@ public class Grid : MonoBehaviour {
 	public LetterPiece.WhichLetter GetRandomLetter()
 	{
 		// Choose a number between 0 and 97
-		int randomKey = Random.Range (0, 97);
+		int randomKey = UnityEngine.Random.Range (0, 97);
 		LetterPiece.WhichLetter randomLetter;
 
 		// Chosse a letter based on weighted chances
