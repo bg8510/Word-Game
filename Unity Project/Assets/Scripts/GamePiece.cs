@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿//using main;
+using UnityEngine;
 
 public class GamePiece : MonoBehaviour {
 
@@ -26,14 +26,14 @@ public class GamePiece : MonoBehaviour {
 		}
 	}
 
+	private Grid grid;
+
 	private Grid.PieceType type;
 
 	public Grid.PieceType Type
 	{
 		get { return type; }
 	}
-
-	private Grid grid;
 
 	public Grid GridRef
 	{
@@ -88,17 +88,17 @@ public class GamePiece : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		grid.EnterPiece (this);
+		grid.EnterPiece(this);
 	}
 
 	void OnMouseDown()
 	{
-		grid.PressedPiece (this);
+		grid.PressedPiece(this);
 	}
 
 	void OnMouseUp()
 	{
-		grid.ReleasePiece ();
+		grid.ReleasePiece();
 	}
 
 	public bool IsMoveable()

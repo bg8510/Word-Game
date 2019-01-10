@@ -13,14 +13,14 @@ public class LetterPiece : MonoBehaviour {
 	};
 
 	[System.Serializable]
-	public struct LetterSprite					// Corresponds to ColorSprite
+	public struct LetterSprite
 	{
-		public WhichLetter letter;				// Corresponds to ColorType
+		public WhichLetter letter;
 		public Sprite sprite;
 	};
 
 	// An array of the LetterSprite structs
-	public LetterSprite[] letterSprites;		// Corresponds to ColorSprite
+	public LetterSprite[] letterSprites;
 
 	private WhichLetter letter;
 
@@ -36,7 +36,7 @@ public class LetterPiece : MonoBehaviour {
 	}
 		
 	private SpriteRenderer sprite;
-	private Dictionary<WhichLetter, Sprite> letterSpriteDict;		// Corresponds to colorSpriteDict
+	private Dictionary<WhichLetter, Sprite> letterSpriteDict;
 
 	void Awake()
 	{

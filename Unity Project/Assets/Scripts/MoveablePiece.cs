@@ -23,10 +23,12 @@ public class MoveablePiece : MonoBehaviour {
 	// Move a piece with animation
 	public void Move(int newX, int newY, float time)
 	{
+        // Stop moveCoroutine if it's still running from previous call
 		if (moveCoroutine != null) {
 			StopCoroutine (moveCoroutine);
 		}
 
+        // Start moveCoroutine with the new values
 		moveCoroutine = MoveCoroutine (newX, newY, time);
 		StartCoroutine (moveCoroutine);
 
@@ -41,13 +43,16 @@ public class MoveablePiece : MonoBehaviour {
 		Vector3 startPos = transform.position;
 		Vector3 endPos = piece.GridRef.GetWorldPosition (newX, newY);
 
-		for (float t = 0; t <= 1 * time; t += Time.deltaTime) {		// Time.deltaTime is the amount of time the last frame took
+		for (float t = 0; t <= 1 * time; t += Time.deltaTime) {        // Time.deltaTime is the amount of time the last frame took
 
-			// Set the position to the current interpolation
+            // Set the position to the current interpolation
+            //print("DEBUG Startpos --------- " + startPos + " / " + endPos + " / " + t/time);			/////////// DEBUG statement
 			piece.transform.position = Vector3.Lerp(startPos, endPos, t/time);
+
 			yield return 0; 			// This statement waits for one frame
 		}
 
-		piece.transform.position = endPos;		// Set the piece at endPos in case it wasn't already completely there
+        // Set the piece at endPos in case it wasn't already completely there
+        piece.transform.position = endPos;		
 	}
 }
